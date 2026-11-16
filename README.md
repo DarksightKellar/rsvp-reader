@@ -20,7 +20,7 @@ A drop-in RSVP (rapid serial visual presentation) speed reader. Words appear one
 <script type="text/plain" id="rsvp-source">Your text here.
 
 Blank lines separate paragraphs.</script>
-<script src="https://cdn.jsdelivr.net/gh/DarksightKellar/rsvp-reader@1/dist/rsvp.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/DarksightKellar/rsvp-reader@main/dist/rsvp.min.js"></script>
 ```
 
 Every `<script type="text/plain">` with `id="rsvp-source"` or a `data-rsvp` attribute gets a player mounted right after it. For manual control: `RSVPReader.mount(hostElement, text)`.
@@ -33,4 +33,4 @@ npm test        # unit tests (core timing logic + player UI in happy-dom)
 npm run build   # bundles src/ to dist/rsvp.min.js
 ```
 
-`src/core.js` holds the pure tokenising and timing logic; `src/player.js` holds the UI, with storage, timers and clipboard injected for testing. Commit `dist/` after building; CI checks it is up to date. Releases are git tags (`v1.x.y`), which jsDelivr serves through the `@1` range.
+`src/core.js` holds the pure tokenising and timing logic; `src/player.js` holds the UI, with storage, timers and clipboard injected for testing. Commit `dist/` after building; CI checks it is up to date. For a pinned, permanently cached version, replace `@main` with a commit SHA.
