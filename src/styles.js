@@ -12,11 +12,14 @@ export const CSS = `
 .rsvp .rsvp-c.hl{color:var(--rsvp-orp)}
 .rsvp .rsvp-hint{position:absolute;bottom:6px;right:10px;font-size:11px;color:var(--rsvp-mute)}
 .rsvp .rsvp-prow{display:flex;align-items:center;gap:10px;margin-top:10px}
-.rsvp .rsvp-bar{display:flex;align-items:center;gap:8px;margin-top:12px;flex-wrap:wrap}
-.rsvp .rsvp-btn{background:var(--rsvp-card);border:1px solid var(--rsvp-line);border-radius:10px;padding:9px 13px;cursor:pointer;min-width:44px;line-height:1.2}
-.rsvp .rsvp-btn.primary{min-width:84px}
+.rsvp .rsvp-bar{display:flex;align-items:center;gap:6px;margin-top:12px;flex-wrap:nowrap}
+.rsvp .rsvp-panel .rsvp-bar{flex-wrap:wrap}
+.rsvp .rsvp-btn{background:var(--rsvp-card);border:1px solid var(--rsvp-line);border-radius:10px;padding:0 10px;height:42px;min-width:0;flex:0 1 44px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;line-height:1;white-space:nowrap}
+.rsvp .rsvp-btn.primary{flex:1 1 72px}
+.rsvp [data-p=text]{flex-basis:56px}
+.rsvp .rsvp-panel .rsvp-btn,.rsvp .rsvp-row .rsvp-btn{flex:0 0 auto}
 .rsvp .rsvp-btn.primary,.rsvp .rsvp-btn[aria-pressed=true]{border-color:var(--rsvp-acc);color:var(--rsvp-acc)}
-.rsvp .rsvp-grow{flex:1}
+.rsvp .rsvp-grow{flex:1 1 0;min-width:0}
 .rsvp .rsvp-meta{font-size:12px;color:var(--rsvp-mute);font-variant-numeric:tabular-nums;white-space:nowrap}
 .rsvp input[type=range]{width:100%;accent-color:var(--rsvp-acc)}
 .rsvp .rsvp-panel{margin-top:12px;background:var(--rsvp-card);border:1px solid var(--rsvp-line);border-radius:12px;padding:12px}
