@@ -262,6 +262,11 @@ export function mount(host, text, deps = {}) {
 
   return {
     root, play, pause, jump,
+    load(newText, { autoplay = false } = {}) {
+      pause(); source = newText.trim(); idx = 0;
+      actions.cancel(); rebuild(false);
+      if (autoplay) play();
+    },
     get index() { return idx; },
     get chunks() { return chunks; },
     get settings() { return { ...o }; },

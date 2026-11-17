@@ -112,3 +112,10 @@ test('mountAll mounts each source script once', () => {
   assert.equal(mountAll(doc).length, 0);
   assert.ok(doc.querySelector('.rsvp'));
 });
+
+test('load swaps in new text and can autoplay', () => {
+  const { p, q } = setup();
+  p.load('Fresh reply here.', { autoplay: true });
+  assert.equal(shown(q), 'Fresh');
+  assert.equal(q('[data-a="play"]').textContent, 'Pause');
+});

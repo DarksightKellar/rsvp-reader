@@ -15,7 +15,7 @@ export const CSS = `
 .rsvp .rsvp-bar{display:flex;align-items:center;gap:6px;margin-top:12px;flex-wrap:nowrap}
 .rsvp .rsvp-panel .rsvp-bar{flex-wrap:wrap}
 .rsvp .rsvp-btn{background:var(--rsvp-card);border:1px solid var(--rsvp-line);border-radius:10px;padding:0 10px;height:42px;min-width:0;flex:0 1 44px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;line-height:1;white-space:nowrap}
-.rsvp .rsvp-btn.primary{flex:1 1 72px}
+.rsvp .rsvp-btn.primary{flex:1 1 72px;max-width:160px}
 .rsvp [data-p=text]{flex-basis:56px}
 .rsvp .rsvp-panel .rsvp-btn,.rsvp .rsvp-row .rsvp-btn{flex:0 0 auto}
 .rsvp .rsvp-btn.primary,.rsvp .rsvp-btn[aria-pressed=true]{border-color:var(--rsvp-acc);color:var(--rsvp-acc)}
