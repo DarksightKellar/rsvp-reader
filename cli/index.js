@@ -5,6 +5,7 @@ import path from 'node:path';
 import { spawn } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { lastReply } from './transcript.js';
+import { toReadable } from './clean.js';
 import { addHook, removeHook } from './settings.js';
 import { createServer } from './server.js';
 
@@ -60,12 +61,13 @@ async function hook() {
     (input.transcript_path && fs.existsSync(input.transcript_path)
       ? lastReply(fs.readFileSync(input.transcript_path, 'utf8')) : '');
   if (!text) return;
+  const readable = toReadable(text);
   const h = await ensureServer();
   if (!h) return;
   if (h.clients === 0) { openBrowser(BASE); await sleep(1200); }
   await fetch(`${BASE}/reply`, {
     method: 'POST', headers: { 'content-type': 'application/json' },
-    body: JSON.stringify({ text }), signal: AbortSignal.timeout(2000),
+    body: JSON.stringify({ text: readable }), signal: AbortSignal.timeout(2000),
   });
 }
 

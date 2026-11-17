@@ -33,6 +33,8 @@ Claude Code runs in a terminal, so it can't draw the player inline. Instead, a S
 npx -y github:DarksightKellar/rsvp-reader install
 ```
 
+Code blocks and tables are summarised as a pointer to the terminal, and markdown symbols are stripped, so replies read as prose.
+
 This copies the reader to `~/.claude/rsvp-reader`, adds the hook to `~/.claude/settings.json` (backing up the original to `settings.json.bak-rsvp`), and works in every project. The page opens at http://127.0.0.1:4777 on the next reply whenever no reader tab is open. Run `node ~/.claude/rsvp-reader/cli/index.js uninstall` to remove it.
 
 ## Development
