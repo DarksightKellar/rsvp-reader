@@ -71,8 +71,11 @@ async function hook() {
 
 const readSettings = () => (fs.existsSync(SETTINGS) ? JSON.parse(fs.readFileSync(SETTINGS, 'utf8')) : {});
 function writeSettings(next) {
-  if (fs.existsSync(SETTINGS)) fs.copyFileSync(SETTINGS, `${SETTINGS}.bak-rsvp`);
+  const existed = fs.existsSync(SETTINGS);
+  if (existed) fs.copyFileSync(SETTINGS, `${SETTINGS}.bak-rsvp`);
+  fs.mkdirSync(CLAUDE_DIR, { recursive: true });
   fs.writeFileSync(SETTINGS, JSON.stringify(next, null, 2) + '\n');
+  return existed;
 }
 
 function install() {
@@ -80,9 +83,9 @@ function install() {
   for (const dir of ['cli', 'dist']) fs.cpSync(path.join(ROOT, dir), path.join(INSTALL_DIR, dir), { recursive: true });
   fs.copyFileSync(path.join(ROOT, 'package.json'), path.join(INSTALL_DIR, 'package.json'));
   const cmd = `"${process.execPath}" "${path.join(INSTALL_DIR, 'cli', 'index.js')}" hook`;
-  writeSettings(addHook(readSettings(), cmd));
+  const backedUp = writeSettings(addHook(readSettings(), cmd));
   console.log(`Installed. Claude Code replies will play at ${BASE} (opens automatically on the next reply).`);
-  console.log(`Previous settings backed up to ${SETTINGS}.bak-rsvp`);
+  if (backedUp) console.log(`Previous settings backed up to ${SETTINGS}.bak-rsvp`);
 }
 
 function uninstall() {
